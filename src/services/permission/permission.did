@@ -1,0 +1,14 @@
+type Result = variant { Ok; Err : text };
+type Role = variant { Viewer; Editor; Owner };
+type Trie = record { root : TrieNode };
+type TrieNode = record {
+  value : opt Role;
+  children : vec record { text; TrieNode };
+};
+service : {
+  c2c_delete_permission : (text) -> (Result);
+  c2c_get_permission : (text) -> (opt Role) query;
+  c2c_get_subkeys : (text) -> (opt vec record { text; Role }) query;
+  c2c_set_permission : (text, Role) -> (Result);
+  inspect_permissions : () -> (Trie) query;
+}

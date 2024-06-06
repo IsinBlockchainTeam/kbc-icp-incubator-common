@@ -1,0 +1,45 @@
+type FileChunk = record { hash : vec nat8; chunk : vec nat8 };
+type FileInfo = record {
+  id : nat32;
+  owner : principal;
+  hash : vec nat8;
+  name : text;
+  mime_type : text;
+  total_size : nat64;
+  organization_id : nat;
+  delegated_organization_ids: vec nat;
+  chunks : nat64;
+};
+type FileWithRole = record { file : FileInfo; role : opt Role };
+type Result = variant { Ok; Err : text };
+type Result_1 = variant { Ok : FileChunk; Err : text };
+type Result_2 = variant { Ok : FileInfo; Err : text };
+type Role = variant { Viewer; Editor; Owner };
+type SharedLink = record {
+  token : text;
+  max_uses : opt nat64;
+  uses : nat64;
+  shared_by : principal;
+  expires_at : opt nat64;
+  file_id : nat32;
+};
+service : (text) -> {
+  add_member : (nat32, principal, Role) -> (Result);
+  create_file : (nat, vec nat, text, text, nat64, vec nat8) -> (nat32);
+  get_file : (nat32) -> (FileInfo) composite_query;
+  get_file_chunk : (nat32, nat32) -> (Result_1) composite_query;
+  get_file_members : (nat32) -> (
+      vec record { principal; Role },
+    ) composite_query;
+  get_file_shares : (nat32) -> (vec SharedLink) composite_query;
+  get_files_for_organization : (nat) -> (vec FileWithRole) composite_query;
+  get_files_for_self : () -> (vec FileWithRole) composite_query;
+  get_shared_file_chunk : (nat32, nat32, text) -> (Result_1);
+  get_shared_file_info : (nat32, text) -> (Result_2) query;
+  put_chunk : (nat32, nat32, FileChunk) -> (Result);
+  remove_file : (nat32) -> (Result);
+  remove_member : (nat32, principal) -> (Result);
+  remove_share : (nat32, text) -> ();
+  rename_file : (nat32, text) -> (Result);
+  share_file : (nat32, opt nat64, opt nat64) -> (SharedLink);
+}
