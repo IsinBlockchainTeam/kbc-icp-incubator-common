@@ -1,0 +1,9 @@
+[workspace]
+members = [
+    "src/clients/c2c_permission",
+    "src/libraries/guards",
+    "src/libraries/shared_types",
+    "src/services/permission",
+    "src/services/storage",
+]
+resolver = "2"

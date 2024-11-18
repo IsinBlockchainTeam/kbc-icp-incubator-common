@@ -1,0 +1,21 @@
+{
+    "extends": "@tsconfig/node16/tsconfig.json",
+    "compilerOptions": {
+        "strictNullChecks": true,
+        "module": "commonjs",
+        "target": "ESNext",
+        "noImplicitAny": true,
+        "outDir": "dist",
+        // "sourceMap": true,
+        "inlineSourceMap": true,
+        "esModuleInterop": true,
+        "declaration": true, // This tells TypeScript to emit an .d.ts definitions file along with your compiled JavaScript,
+        "lib": ["ESNext", "DOM"],
+    },
+    "include": ["**/*"],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "**/*.dev.ts",
+    ]
+}

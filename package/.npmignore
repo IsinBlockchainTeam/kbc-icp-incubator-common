@@ -1,0 +1,5 @@
+# this overrides th .gitignore when publishing to npm/node_modules
+*
+!declarations/**
+!dist/**
+

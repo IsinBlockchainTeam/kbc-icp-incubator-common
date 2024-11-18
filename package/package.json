@@ -1,0 +1,42 @@
+{
+    "name": "@kbc-icp-incubator/common",
+    "version": "1.0.0",
+    "description": "A library that contains ICP common utils",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "prebuild:icp": "cp -r ../icp/src/declarations ./ && node transform-declarations.js",
+        "postbuild:icp": "cp -r ./declarations ./dist/",
+        "build:icp": "npm run prebuild:icp && npx tsc && npm run postbuild:icp",
+        "test": "jest",
+        "prettier": "npx prettier . --check"
+    },
+    "author": "ISIN Blockchain team",
+    "license": "MIT",
+    "devDependencies": {
+        "@babel/cli": "^7.25.6",
+        "@babel/core": "^7.25.2",
+        "@babel/plugin-transform-modules-commonjs": "^7.24.8",
+        "@babel/preset-env": "^7.25.4",
+        "@types/crypto-js": "^4.2.2",
+        "@types/n3": "^1.16.4",
+        "@types/node": "^18.11.5",
+        "@types/uuid": "^9.0.0",
+        "prettier": "^3.3.1"
+    },
+    "dependencies": {
+        "@dfinity/agent": "1.4.0",
+        "@dfinity/auth-client": "1.4.0",
+        "@supercharge/promise-pool": "^3.2.0",
+        "@types/readable-stream": "^4.0.2",
+        "buffer": "^6.0.3",
+        "cpy-cli": "^4.2.0",
+        "cross-fetch": "^3.1.5",
+        "crypto-js": "^4.2.0",
+        "file-type": "^16.5.4",
+        "form-data": "^4.0.0",
+        "icp-declarations": "file:./declarations",
+        "ttypescript": "1.5.15",
+        "uuid": "^9.0.0"
+    }
+}

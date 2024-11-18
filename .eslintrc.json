@@ -1,0 +1,75 @@
+{
+    "env": {
+        "es2021": true,
+        "node": true,
+        "jest": true,
+        "mocha": true,
+        "browser": true
+    },
+    "extends": [
+        "airbnb-base"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "mocha"
+    ],
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx"
+                ]
+            }
+        }
+    },
+    "rules": {
+        "@typescript-eslint/member-ordering": [
+            "error",
+            { "default": ["field", "constructor", "method"] }
+        ],
+        "max-len": "off",
+        "indent": [
+            "error",
+            4
+        ], // Indent with 4 spaces
+        "no-underscore-dangle": "off",
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "import/extensions": [
+            "error",
+            {
+                "ts": "never"
+            }
+        ],
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": [
+                    "**/*.test.ts",
+                    "**/*.test.tsx"
+                ]
+            }
+        ],
+        "import/prefer-default-export": "off",
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": [
+            "error"
+        ],
+        "no-unused-vars": "off",
+        "grouped-accessor-pairs": "off",
+        "prefer-destructuring": "off",
+        "no-plusplus": "off",
+        "operator-linebreak": "off",
+        "no-case-declarations": "off"
+    }
+}
