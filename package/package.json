@@ -5,9 +5,9 @@
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "scripts": {
-        "prebuild:icp": "cp -r ../icp/src/declarations ./ && node transform-declarations.js",
-        "postbuild:icp": "cp -r ./declarations ./dist/",
-        "build:icp": "npm run prebuild:icp && npx tsc && npm run postbuild:icp",
+        "preinstall": "cp -r ../icp/src/declarations ./ && node transform-declarations.js",
+        "postbuild": "cp -r ./declarations ./dist/",
+        "build": "npm run preinstall && npx tsc",
         "test": "jest",
         "prettier": "npx prettier . --check"
     },
