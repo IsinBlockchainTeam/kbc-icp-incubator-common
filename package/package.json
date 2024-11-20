@@ -1,9 +1,13 @@
 {
-    "name": "@kbc-icp-incubator/common",
+    "name": "@isinblockchainteam/kbc-icp-incubator-common",
     "version": "1.0.0",
     "description": "A library that contains ICP common utils",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/IsinBlockchainTeam/kbc-icp-incubator-common.git"
+    },
     "scripts": {
         "preinstall": "cp -r ../icp/src/declarations ./ && node transform-declarations.js",
         "postbuild": "cp -r ./declarations ./dist/",
